@@ -61,3 +61,53 @@ sagemaker-huggingface-inference-toolkit = "^2.4.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+# ----------------------------------
+# --- Poe the Poet Configuration ---
+# ----------------------------------
+
+
+[tool.poe.tasks]
+
+# Infrastructure
+## Local infrastructure
+local-docker-infrastructure-up = "docker compose up -d"
+local-docker-infrastructure-down = "docker compose stop"
+local-zenml-server-down = "poetry run zenml logout --local"
+
+# it will start docker and zenml server
+local-infrastructure-up = [
+    "local-docker-infrastructure-up",
+    "local-zenml-server-down",
+    "local-zenml-server-up"
+]
+
+# it will stop docker and zenml server
+local-infrastructure-down = [
+    "local-docker-infrastructure-down",
+    "local-zenml-server-down",
+]
+
+
+# Defines a task named local-zenml-server-up in Poe the Poet.
+# This means that the task behavior is controlled by evaluating the Python expression sys.platform.
+# sys.platform returns a string that represents the operating system:
+# "darwin" → macOS
+#"linux" → Linux-based OS
+#"win32" → Windows
+
+[tool.poe.tasks.local-zenml-server-up]
+control.expr = "sys.platform"
+
+[[tool.poe.tasks.local-zenml-server-up.switch]]
+case = "darwin"
+env = { OBJC_DISABLE_INITIALIZE_FORK_SAFETY = "YES" }
+cmd = "poetry run zenml login --local"
+
+[[tool.poe.tasks.local-zenml-server-up.switch]]
+case = "win32"
+cmd = "poetry run zenml login --local --blocking"
+
+[[tool.poe.tasks.local-zenml-server-up.switch]]
+cmd = "poetry run zenml login --local"

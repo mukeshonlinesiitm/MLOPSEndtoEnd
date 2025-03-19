@@ -1,0 +1,40 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: "llm_engineering_mongo_mukesh"
+    logging:
+      options:
+        max-size: 1g
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "llm_engineering"
+      MONGO_INITDB_ROOT_PASSWORD: "llm_engineering"
+    ports:
+      - 27018:27018
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - local
+    restart: always
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: "llm_engineering_qdrant_mukesh"
+    ports:
+      - 6337:6337
+      - 6338:6338
+    expose:
+      - 6337
+      - 6338
+    volumes:
+      - qdrant_data:/qdrant/storage
+    networks:
+      - local
+    restart: always
+
+volumes:
+  mongo_data:
+  qdrant_data:
+
+networks:
+  local:
+    driver: bridge
