@@ -44,22 +44,24 @@ url: -  https://github.com/pyenv/pyenv?tab=readme-ov-file#installation
    See [#264](https://github.com/pyenv/pyenv/issues/264) for details.
 
 4. Restart your shell
+  ```bash
     exec "$SHELL"
-5. Install pyton version 3.11.8 using pyenv command
+  ```
+6. Install pyton version 3.11.8 using pyenv command
       pyenv install 3.11.8
        if install successfully it will show as below.
 	   ![alt text](image-1.png)
-6. Please run below command if you face issue in above command 
+7. Please run below command if you face issue in above command 
    pyenv will try its best to download and compile the wanted Python version, but sometimes compilation fails because of unmet system dependencies, or compilation succeeds but the new Python version exhibits weird failures at runtime. The following instructions are our recommendations for a sane build environment.
 
     url :- Home · pyenv/pyenv Wiki · GitHub
  
-7. Check Python version it will as below.
+8. Check Python version it will as below.
 	 
-8. To make Python 3.11.8 the default version across your entire system (whenever you open a new terminal), use the following command
+9. To make Python 3.11.8 the default version across your entire system (whenever you open a new terminal), use the following command
 	pyenv global 3.11.8
 
-9. clone the book repository and navigate to it
+10. clone the book repository and navigate to it
 	$ git clone https://github.com/PacktPublishing/LLM-Engineers-Handbook.git
     $ cd LLM-Engineers-Handbook/
 
