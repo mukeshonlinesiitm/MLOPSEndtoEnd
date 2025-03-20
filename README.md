@@ -50,7 +50,7 @@ url: -  https://github.com/pyenv/pyenv?tab=readme-ov-file#installation
 6. Install pyton version 3.11.8 using pyenv command
       pyenv install 3.11.8
        if install successfully it will show as below.
-	   ![alt text](image-1.png)
+	   ![alt text](/image_readme/image.png)
 6. Please run below command if you face issue in above command 
    pyenv will try its best to download and compile the wanted Python version, but sometimes compilation fails because of unmet system dependencies, or compilation succeeds but the new Python version exhibits weird failures at runtime. The following instructions are our recommendations for a sane build environment.
 
