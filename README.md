@@ -4,7 +4,7 @@ Entire cycle of MLOPS
 Setup pyenv
 url: -  https://github.com/pyenv/pyenv?tab=readme-ov-file#installation
 1. Download/ Getting Pyenv
-      curl -fsSL https://pyenv.run | bash
+      $ curl -fsSL https://pyenv.run | bash
 2. Set up your shell environment for Pyenv
       ![alt text](image.png)
 3. Restart your shell
