@@ -57,6 +57,7 @@ url: -  https://github.com/pyenv/pyenv?tab=readme-ov-file#installation
     url :- Home · pyenv/pyenv Wiki · GitHub
  
 8. Check Python version it will as below.
+		![alt text](/image_readme/image_python_version.png)
 	 
 9. To make Python 3.11.8 the default version across your entire system (whenever you open a new terminal), use the following command
 	pyenv global 3.11.8
