@@ -4,16 +4,52 @@ Entire cycle of MLOPS
 Setup pyenv
 url: -  https://github.com/pyenv/pyenv?tab=readme-ov-file#installation
 1. Download/ Getting Pyenv
+    ```bash
       $ curl -fsSL https://pyenv.run | bash
-2. Set up your shell environment for Pyenv
-      ![alt text](image.png)
-3. Restart your shell
+    ```
+3. Set up your shell environment for Pyenv - for Bash
+	  Stock Bash startup files vary widely between distributions in which of them source
+	  which, under what circumstances, in what order and what additional configuration they perform.
+	  As such, the most reliable way to get Pyenv in all environments is to append Pyenv
+	  configuration commands to both `.bashrc` (for interactive shells)
+	  and the profile file that Bash would use (for login shells).
+	
+	  1. First, add the commands to `~/.bashrc` by running the following in your terminal:
+	
+	      ```bash
+	      echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+	      echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+	      echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
+	      ```
+	  2. Then, if you have `~/.profile`, `~/.bash_profile` or `~/.bash_login`, add the commands there as well.
+	     If you have none of these, create a `~/.profile` and add the commands there.
+	
+	     * to add to `~/.profile`:
+	       ``` bash
+	       echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+	       echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+	       echo 'eval "$(pyenv init - bash)"' >> ~/.profile
+	       ```
+	     * to add to `~/.bash_profile`:
+	       ```bash
+	       echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+	       echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
+	       echo 'eval "$(pyenv init - bash)"' >> ~/.bash_profile
+	       ```
+	
+   **Bash warning**: There are some systems where the `BASH_ENV` variable is configured
+   to point to `.bashrc`. On such systems, you should almost certainly put the
+   `eval "$(pyenv init - bash)"` line into `.bash_profile`, and **not** into `.bashrc`. Otherwise, you
+   may observe strange behaviour, such as `pyenv` getting into an infinite loop.
+   See [#264](https://github.com/pyenv/pyenv/issues/264) for details.
+
+4. Restart your shell
     exec "$SHELL"
-4. Install pyton version 3.11.8 using pyenv command
+5. Install pyton version 3.11.8 using pyenv command
       pyenv install 3.11.8
        if install successfully it will show as below.
 	   ![alt text](image-1.png)
-5. Please run below command if you face issue in above command 
+6. Please run below command if you face issue in above command 
    pyenv will try its best to download and compile the wanted Python version, but sometimes compilation fails because of unmet system dependencies, or compilation succeeds but the new Python version exhibits weird failures at runtime. The following instructions are our recommendations for a sane build environment.
 
     url :- Home · pyenv/pyenv Wiki · GitHub
