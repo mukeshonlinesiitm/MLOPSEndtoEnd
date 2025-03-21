@@ -137,3 +137,17 @@ class NoSQLBaseDocument(BaseModel, Generic[T], ABC):
             )
 
         return cls.Settings.name
+
+    @classmethod
+    def delete_all(cls: Type[T]) -> T | str:
+        collection = _database[cls.get_collection_name()]
+        try:
+            instance = collection.delete_many({})
+            if instance:
+                return "All documents deleted."
+
+            return None
+        except errors.OperationFailure:
+            logger.error("Failed to retrieve document")
+
+            return None        

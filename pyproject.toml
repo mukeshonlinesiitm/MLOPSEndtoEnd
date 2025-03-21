@@ -42,6 +42,7 @@ langchain-community = "^0.2.11"
 fastapi = ">=0.100,<=0.110"
 uvicorn = "^0.30.6"
 opik = "^0.2.2"
+playwright = "^1.51.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -75,6 +76,8 @@ build-backend = "poetry.core.masonry.api"
 local-docker-infrastructure-up = "docker compose up -d"
 local-docker-infrastructure-down = "docker compose stop"
 local-zenml-server-down = "poetry run zenml logout --local"
+run-digital-data-etl-maxime = "poetry run python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_maxime_labonne.yaml"
+run-import-data-warehouse-from-json = "poetry run python -m tools.data_warehouse --import-raw-data"
 
 # it will start docker and zenml server
 local-infrastructure-up = [
@@ -88,6 +91,8 @@ local-infrastructure-down = [
     "local-docker-infrastructure-down",
     "local-zenml-server-down",
 ]
+
+
 
 
 # Defines a task named local-zenml-server-up in Poe the Poet.

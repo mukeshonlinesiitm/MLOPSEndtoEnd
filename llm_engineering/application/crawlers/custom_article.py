@@ -1,6 +1,6 @@
 from urllib.parse import urlparse
 
-from langchain_community.document_loaders import AsyncHtmlLoader
+from langchain_community.document_loaders import AsyncHtmlLoader,PlaywrightURLLoader
 from langchain_community.document_transformers.html2text import Html2TextTransformer
 from loguru import logger
 
@@ -22,9 +22,10 @@ class CustomArticleCrawler(BaseCrawler):
 
             return
 
-        logger.info(f"Starting scrapping article: {link}")
-
+        logger.info(f"CustomArticleCrawler :- Starting scrapping article: {link}")
+        
         loader = AsyncHtmlLoader([link])
+        #loader = PlaywrightURLLoader([link]) 
         docs = loader.load()
 
         html2text = Html2TextTransformer()

@@ -24,7 +24,12 @@ class BaseCrawler(ABC):
 class BaseSeleniumCrawler(BaseCrawler, ABC):
     def __init__(self, scroll_limit: int = 5) -> None:
         options = webdriver.ChromeOptions()
-
+        prefs = {
+            "profile.default_content_setting_values.javascript": 1,  # 1 = Allow JavaScript
+            "profile.default_content_setting_values.cookies": 1      # 1 = Allow Cookies
+                }
+        options.add_experimental_option("prefs", prefs)
+        
         options.add_argument("--no-sandbox")
         options.add_argument("--headless=new")
         options.add_argument("--disable-dev-shm-usage")
@@ -38,6 +43,8 @@ class BaseSeleniumCrawler(BaseCrawler, ABC):
         options.add_argument(f"--data-path={mkdtemp()}")
         options.add_argument(f"--disk-cache-dir={mkdtemp()}")
         options.add_argument("--remote-debugging-port=9226")
+        # Ensure JavaScript is enabled (default in Chrome, but set explicitly)
+
 
         self.set_extra_driver_options(options)
 
