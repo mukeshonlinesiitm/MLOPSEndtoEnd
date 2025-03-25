@@ -212,7 +212,7 @@ $ poetry poe local-infrastructure-up
 Connect ZenML from remote server to local server.
    Open command prompt and type below.
    ```bash
-   $ ssh -L 8237:localhost:8237 sysadmin@20.127.218.35
+   $ ssh -L 8237:localhost:8237 user@ip
    ```
    then open browser and type http://127.0.0.1:8237 to check ZenML browser
 
