@@ -7,7 +7,7 @@ url: -  https://github.com/pyenv/pyenv?tab=readme-ov-file#installation
     ```bash
       $ curl -fsSL https://pyenv.run | bash
     ```
-3. Set up your shell environment for Pyenv - for Bash
+2. Set up your shell environment for Pyenv - for Bash
 	  Stock Bash startup files vary widely between distributions in which of them source
 	  which, under what circumstances, in what order and what additional configuration they perform.
 	  As such, the most reliable way to get Pyenv in all environments is to append Pyenv
@@ -43,176 +43,221 @@ url: -  https://github.com/pyenv/pyenv?tab=readme-ov-file#installation
    may observe strange behaviour, such as `pyenv` getting into an infinite loop.
    See [#264](https://github.com/pyenv/pyenv/issues/264) for details.
 
-4. Restart your shell
+3. Restart your shell
   ```bash
     exec "$SHELL"
   ```
-6. Install pyton version 3.11.8 using pyenv command
-      pyenv install 3.11.8
-       if install successfully it will show as below.
-	   ![alt text](/image_readme/image.png)
-6. Please run below command if you face issue in above command 
+4. Install pyton version 3.11.8 using pyenv command.
+```bash
+pyenv install 3.11.8
+```
+
+if install successfully it will show as below.
+
+![alt text](image_readme/image_pyenv_install.png)
+
+5. Please run below command if you face issue in above command 
    pyenv will try its best to download and compile the wanted Python version, but sometimes compilation fails because of unmet system dependencies, or compilation succeeds but the new Python version exhibits weird failures at runtime. The following instructions are our recommendations for a sane build environment.
 
-    url :- Home · pyenv/pyenv Wiki · GitHub
+    url :- [Home · pyenv/pyenv Wiki · GitHub](https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
  
-8. Check Python version it will as below.
-		![alt text](/image_readme/image_python_version.png)
-	 
-9. To make Python 3.11.8 the default version across your entire system (whenever you open a new terminal), use the following command
-	pyenv global 3.11.8
+6. Check Python version it will as below.
 
-10. clone the book repository and navigate to it
+	![alt text](image_readme/image_python_version_1.png)
+	 
+7. To make Python 3.11.8 the default version across your entire system (whenever you open a new terminal), use the following command
+	```bash
+		$ pyenv global 3.11.8
+	```
+
+9. clone the book repository and navigate to it
 	$ git clone https://github.com/PacktPublishing/LLM-Engineers-Handbook.git
     $ cd LLM-Engineers-Handbook/
 
     cross check the python version to ensure that python version 
+	```bash
     $ python –version
+	```
+
+	![alt text](image_readme/image_python_version_1.png)
  
- 
 10. Poetry for dependency management Poetry
 	a) Install 
-        url : https://python-poetry.org/docs/#installing-with-the-official-installer
-        Command :-   curl -sSL https://install.python-poetry.org | python3 -
-	
+	url : https://python-poetry.org/docs/#installing-with-the-official-installer
+	```bash
+	$ curl -sSL https://install.python-poetry.org | python3 -
+	```
+	Help Document.
+
+	![alt text](image_readme/image_Poetry.png)
 
 
+	Output as below.
 
-			
-
-
-
-
-
-
-
-
-
-
-
-
-	Output as below:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	![alt text](image_readme/imagePoetryoutput.png)
 
 	Setup to add in path or call direct
-	Direct call ( without setup)
-•	Code:- /home/sysadmin/.local/bin/poetry --version
-	Setup poetry so that no need to use the path every time.
-•	Setup 
- 				    export PATH="/home/sysadmin/.local/bin:$PATH"
-
+	1. Direct call ( without setup)
+	```bash
+	/home/sysadmin/.local/bin/poetry --version
+	```
+	2. Setup poetry so that no need to use the path every time
+	```bash
+	$ export PATH="/home/sysadmin/.local/bin:$PATH"
+	```
 	b) once installation done 
-	Verify Poetry installation
-•	code :-  poetry --version
-•	output:- 
+	
+	Verify Poetry installation
+	```bash
+	$ poetry --version
+	```
+	output. 
+	
+	![alt text](image_readme/imagePoetryversion.png)
 
-	Set up the project environment and install dependencies
-	Code:- poetry env use 3.11
-it will create virtual environment
- 
+	Set up the project environment and install dependencies
+	```bash
+	$ poetry env use 3.11
+	```
+	it will create virtual environment.
 
-	Code:- poetry install --without aws
-it will install all dependencies of the project
- 
-	Code:- poetry run pre-commit install
-Set up pre-commit hooks for code verification
- 
+	![alt text](image_readme/imagepeotryvirtalenv.png)
 
-Poe the Poet
-https://poethepoet.natn.io/index.html
-Activate peothepoet
-      poetry self add 'poethepoet[poetry_plugin]'
- 
+	```bash
+	$ poetry install --without aws
+	```
+	it will install all dependencies of the project.
 
-c) Activate the Environment 
+	![alt text](image_readme/image_lib_install.png)
+
+	Set up pre-commit hooks for code verification
+	```bash
+	$ poetry run pre-commit install
+	```
+	![alt text](image_readme/imagepre-commit.png)
+	
+11. Poe the Poet
+	https://poethepoet.natn.io/index.html
+	Activate peothepoet
+	```bash
+    $ poetry self add 'poethepoet[poetry_plugin]'
+	```
+	output.
+
+	![alt text](image_readme/imagepeothepoet.png)
+
+	Activate the Environment 
 	url : https://python-poetry.org/docs/managing-environments/#bash-csh-zsh
-1.	Start a Poetry shell:
-eval $(poetry env activate)
-2. check the environment information
-       poetry env info
- 
+	Start a Poetry shell:
+	```bash
+	$ eval $(poetry env activate)
+	```
+	check the environment information
+	```bash
+    $ poetry env info
+    ```
 
- 
-Docker setup
+	![alt text](image_readme/image_peotry_info.png)
+
+
+
+## **Docker setup**
+
 url : - https://docs.docker.com/desktop/setup/install/linux/ubuntu/
-For non-Gnome Desktop environments, gnome-terminal must be installed:
+
+For non-Gnome Desktop environments, gnome-terminal must be installed.
+```bash
 $ sudo apt install gnome-terminal
-Install using the apt repository
+```
+
+Install using the apt repository.
 url:-  https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
+![alt text](image_readme/image_docker_aptrepository.png)
+
+
 Install the Docker packages.
+```bash
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-Verify that the installation is successful by running the hello-world image:
+```
+
+Verify that the installation is successful by running the hello-world image
+```bash
 $ sudo docker run hello-world
-
-
-
-
+```
+output.
+![alt text](image_readme/image_docker_hello_world.png)
 
 
 
 After you’ve successfully installed Docker Desktop, you can check the versions of these binaries by running the following commands:
+```bash
 $ docker compose version
 $ docker --version
- 
+```
+
+output 
+
+![alt text](image_readme/image_docker_version.png)
+
 Add certificate 
+```bash
 $ sudo apt-get install docker-ce
+```
 
 Start docker, mangodb, quadrant and Zenml
+```bash
 $ poetry poe local-infrastructure-up
+```
 Connect ZenML from remote server to local server.
    Open command prompt and type below.
-    cmd:-  ssh -L 8237:localhost:8237 sysadmin@20.127.218.35
+   ```bash
+   $ ssh -L 8237:localhost:8237 sysadmin@20.127.218.35
+   ```
    then open browser and type http://127.0.0.1:8237 to check ZenML browser
+
 Install Chrome in Ubuntu
+```bash
 $ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 $ sudo apt -y install ./google-chrome-stable_current_amd64.deb
 $ google-chrome –version
+```
 
 Execute to extract the data from different link with/without user id
+```bash
 $ poetry poe run-digital-data-etl
- 
-# Login to ubuntu server
-Cmd:- ssh -i ~/.ssh/id_rsa.pem sysadmin@20.127.218.35
+```
 
-# run to load the environment variable
+
+
+## ** Once Setup done use to run the command to execute the program **
+Login to ubuntu server
+```bash
+ssh -i ~/.ssh/id_rsa.pem user@ip
+```
+run to load the environment variable
+```bash
 $ source ~/.bashrc
-
-# to set PATH of  poetry if not working above
+```
+to set PATH of  poetry if not working above
+```bash
 $ export PATH="/home/sysadmin/.local/bin:$PATH"
-
 $ cd mukesh/MLOPSEndtoEnd/
-# activate poetry to start the virtual environment
+```
+activate poetry to start the virtual environment
+```bash
 $ eval $(poetry env activate)
-
-# start docker and zenml together.
+```
+start docker and zenml together.
+```bash
 $ peotry peo local-infrastructure-up
-
-# to start the zenml service inside the docker
+```
+to start the zenml service inside the docker
+```bash
 zenml login --local –docker
+```
 
- 
-About click 
-Click is a Python package for creating beautiful command line interfaces in a composable way with as little code as necessary. It's the "Command Line Interface Creation Kit". It's highly configurable but comes with sensible defaults out of the box.
-It aims to make the process of writing command line tools quick and fun while also preventing any frustration caused by the inability to implement an intended CLI API.
-Click in three points:
-•	Arbitrary nesting of commands
-•	Automatic help page generation
-•	Supports lazy loading of subcommands at runtime
+
 
 
 
