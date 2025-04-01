@@ -58,14 +58,18 @@ if install successfully it will show as below.
 
 5. Please run below command if you face issue in above command 
    pyenv will try its best to download and compile the wanted Python version, but sometimes compilation fails because of unmet system dependencies, or compilation succeeds but the new Python version exhibits weird failures at runtime. The following instructions are our recommendations for a sane build environment.
-
+```bash
+sudo apt update; sudo apt install build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev curl git \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+```
     url :- [Home · pyenv/pyenv Wiki · GitHub](https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
  
-6. Check Python version it will as below.
+7. Check Python version it will as below.
 
 	![alt text](image_readme/image_python_version_1.png)
 	 
-7. To make Python 3.11.8 the default version across your entire system (whenever you open a new terminal), use the following command
+8. To make Python 3.11.8 the default version across your entire system (whenever you open a new terminal), use the following command
 	```bash
 		$ pyenv global 3.11.8
 	```
