@@ -271,7 +271,7 @@ sudo systemctl enable xrdp
 sudo adduser xrdp ssl-cert
 echo xfce4-session >~/.xsession
 sudo service xrdp restart
-sudo passed <username>
+sudo passwd <username>
 ```
 
 
